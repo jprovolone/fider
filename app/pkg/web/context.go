@@ -358,6 +358,7 @@ func (c *Context) AddCookie(name, value string, expires time.Time) *http.Cookie 
 		Path:     "/",
 		Expires:  expires,
 		Secure:   c.Request.IsSecure,
+		SameSite: http.SameSiteNoneMode,
 	}
 	http.SetCookie(&c.Response, cookie)
 	return cookie
