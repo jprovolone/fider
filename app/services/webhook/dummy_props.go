@@ -32,7 +32,7 @@ You can use ` + "`" + `{{ markdown .post_description }}` + "`" + ` to parse __Ma
 	HasVoted:      true,
 	VotesCount:    7,
 	CommentsCount: 3,
-	Status:        enum.PostStarted,
+	Status:        enum.PostInDevelopment,
 	Response: &entity.PostResponse{
 		Text:        "This is a response, still in *Markdown*.",
 		RespondedAt: time.Date(2021, time.July, 9, 15, 29, 57, 0, time.UTC),
