@@ -36,7 +36,7 @@ func getViewData(query query.SearchPosts) (string, []enum.PostStatus, string) {
 		// Use a sensible default list of status filters
 		statusFilters = []enum.PostStatus{
 			enum.PostOpen,
-			enum.PostStarted,
+			enum.PostInDevelopment,
 			enum.PostPlanned,
 		}
 	}
@@ -53,30 +53,30 @@ func getViewData(query query.SearchPosts) (string, []enum.PostStatus, string) {
 	case "most-discussed":
 		sort = "comments_count"
 	case "my-votes":
-		// Depracated: You can instead filter on my votes only for more flexibility than using this view.
+		// Deprecated: You can instead filter on my votes only for more flexibility than using this view.
 		condition = "AND has_voted = true"
 		sort = "id"
 	case "planned":
-		// Depracated: Use status filters instead
+		// Deprecated: Use status filters instead
 		sort = "response_date"
 		statusFilters = []enum.PostStatus{enum.PostPlanned}
 	case "started":
-		// Depracated: Use status filters instead
+		// Deprecated: Use status filters instead
 		sort = "response_date"
-		statusFilters = []enum.PostStatus{enum.PostStarted}
+		statusFilters = []enum.PostStatus{enum.PostInDevelopment}
 	case "completed":
-		// Depracated: Use status filters instead
+		// Deprecated: Use status filters instead
 		sort = "response_date"
 		statusFilters = []enum.PostStatus{enum.PostCompleted}
 	case "declined":
-		// Depracated: Use status filters instead
+		// Deprecated: Use status filters instead
 		sort = "response_date"
 		statusFilters = []enum.PostStatus{enum.PostDeclined}
 	case "all":
 		sort = "id"
 		statusFilters = []enum.PostStatus{
 			enum.PostOpen,
-			enum.PostStarted,
+			enum.PostInDevelopment,
 			enum.PostPlanned,
 			enum.PostCompleted,
 			enum.PostDeclined,
