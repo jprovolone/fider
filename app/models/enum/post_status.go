@@ -6,37 +6,46 @@ type PostStatus int
 var (
 	//PostOpen is the default status
 	PostOpen PostStatus
-	//PostStarted is used when the post has been accepted and work is in progress
-	PostStarted PostStatus = 1
+	//PostInDevelopment is used when the post has been accepted and work is in progress
+	PostInDevelopment PostStatus = 1
+	//PostAlpha is used when the feature is in alpha testing
+	PostAlpha PostStatus = 2
+	//PostBeta is used when the feature is in beta testing
+	PostBeta PostStatus = 3
 	//PostCompleted is used when the post has been accepted and already implemented
-	PostCompleted PostStatus = 2
+	PostCompleted PostStatus = 4
 	//PostDeclined is used when organizers decide to decline an post
-	PostDeclined PostStatus = 3
+	PostDeclined PostStatus = 5
 	//PostPlanned is used when organizers have accepted an post and it's on the roadmap
-	PostPlanned PostStatus = 4
+	PostPlanned PostStatus = 6
 	//PostDuplicate is used when the post has already been posted before
-	PostDuplicate PostStatus = 5
+	PostDuplicate PostStatus = 7
 	//PostDeleted is used when the post is completely removed from the site and should never be shown again
-	PostDeleted PostStatus = 6
+	PostDeleted PostStatus = 8
 )
 var postStatusIDs = map[PostStatus]string{
-	PostOpen:      "open",
-	PostStarted:   "started",
-	PostCompleted: "completed",
-	PostDeclined:  "declined",
-	PostPlanned:   "planned",
-	PostDuplicate: "duplicate",
-	PostDeleted:   "deleted",
+	PostOpen:          "open",
+	PostInDevelopment: "in-development",
+	PostAlpha:         "alpha",
+	PostBeta:          "beta",
+	PostCompleted:     "completed",
+	PostDeclined:      "declined",
+	PostPlanned:       "planned",
+	PostDuplicate:     "duplicate",
+	PostDeleted:       "deleted",
 }
 
 var postStatusNames = map[string]PostStatus{
-	"open":      PostOpen,
-	"started":   PostStarted,
-	"completed": PostCompleted,
-	"declined":  PostDeclined,
-	"planned":   PostPlanned,
-	"duplicate": PostDuplicate,
-	"deleted":   PostDeleted,
+	"open":           PostOpen,
+	"in-development": PostInDevelopment,
+	"started":        PostInDevelopment, // Legacy support for old 'started' status
+	"alpha":          PostAlpha,
+	"beta":           PostBeta,
+	"completed":      PostCompleted,
+	"declined":       PostDeclined,
+	"planned":        PostPlanned,
+	"duplicate":      PostDuplicate,
+	"deleted":        PostDeleted,
 }
 
 // MarshalText returns the Text version of the post status
