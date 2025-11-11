@@ -21,7 +21,9 @@ export class PostStatus {
 
   public static Open = new PostStatus("Open", "open", false, false, true)
   public static Planned = new PostStatus("Planned", "planned", true, false, true)
-  public static Started = new PostStatus("Started", "started", true, false, true)
+  public static InDevelopment = new PostStatus("In Development", "in-development", true, false, true)
+  public static Alpha = new PostStatus("Alpha", "alpha", true, false, true)
+  public static Beta = new PostStatus("Beta", "beta", true, false, true)
   public static Completed = new PostStatus("Completed", "completed", true, true, true)
   public static Declined = new PostStatus("Declined", "declined", true, true, true)
   public static Duplicate = new PostStatus("Duplicate", "duplicate", true, true, true)
@@ -33,10 +35,14 @@ export class PostStatus {
         return status
       }
     }
+    // Legacy support for old 'started' status
+    if (value === "started") {
+      return PostStatus.InDevelopment
+    }
     throw new Error(`PostStatus not found for value ${value}.`)
   }
 
-  public static All = [PostStatus.Open, PostStatus.Planned, PostStatus.Started, PostStatus.Completed, PostStatus.Duplicate, PostStatus.Declined]
+  public static All = [PostStatus.Open, PostStatus.Planned, PostStatus.InDevelopment, PostStatus.Alpha, PostStatus.Beta, PostStatus.Completed, PostStatus.Duplicate, PostStatus.Declined]
 }
 
 export interface PostResponse {
